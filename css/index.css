@@ -134,7 +134,6 @@ main .image1:hover img{
   box-shadow: 0 10px 20px rgba(248, 113, 46, 0.6);
 }
 main .image2:hover img{
-  content: url(../image/theater1.png);
   top: 55%;
   box-shadow: 0 10px 20px rgba(248, 113, 46, 0.6);
 }
