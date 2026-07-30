@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Laika Cinema</title>
+  <link rel="icon" type="image/png" href="image/logo1.png">
+  <link rel="apple-touch-icon" href="image/logo1.png">
   <link rel="stylesheet" href="css/style.css">
   <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -30,22 +32,41 @@
       </div>
     </header>
 
-    <main>
-      <div class="title">
-        <h1>LAIKA CINEMA</h1>
-      </div>
-      <div class="images">
-        <div class="image1">
+    <main class="hero-slider" id="hero">
+      <article class="hero-slide is-active" data-slide="0">
+        <div class="hero-slide__media">
+          <img src="image/theater1.png" alt="Laika Cinema theater interior">
+        </div>
+        <div class="hero-slide__overlay"></div>
+        <div class="hero-slide__content">
+          <p class="hero-slide__label">LAIKA CINEMA</p>
+          <h2 class="hero-slide__title">LIFE LIKE<br>A CINEMA</h2>
+          <a href="#s1" class="hero-slide__btn">Discover LAIKA</a>
+        </div>
+      </article>
+
+      <article class="hero-slide" data-slide="1">
+        <div class="hero-slide__media">
           <img src="image/main-intro.gif" alt="">
         </div>
-        <div class="image2">
-          <img src="image/theater2.png" alt="">
-          <img src="image/theater1.png" alt="">
+        <div class="hero-slide__overlay"></div>
+      </article>
+
+      <article class="hero-slide" data-slide="2">
+        <div class="hero-slide__media">
+          <img src="image/mainposter1.jpg" alt="Now showing poster">
         </div>
-        <div class="image3">
-          <img src="image/mainposter1.jpg" alt="">
-          <img src="image/mainposter2.jpg" alt="">
+        <div class="hero-slide__overlay"></div>
+        <div class="hero-slide__content">
+          <h2 class="hero-slide__title hero-slide__title--sm">NOW SHOWING</h2>
+          <a href="#s2" class="hero-slide__btn">View Details →</a>
         </div>
+      </article>
+
+      <div class="hero-slider__dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="hero-dot is-active" aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 2" aria-current="false"></button>
+        <button type="button" class="hero-dot" aria-label="Slide 3" aria-current="false"></button>
       </div>
     </main>
 
@@ -233,5 +254,7 @@
     </footer>
   </div>
 
+  <script src="js/header.js"></script>
+  <script src="js/hero.js"></script>
 </body>
 </html>

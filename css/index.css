@@ -14,8 +14,8 @@ body {
 
 .goto-top {
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: 6px;
+  bottom: 10px;
   font-size: 40px;
   color: #FF742F;
   width: 50px;
@@ -23,9 +23,19 @@ body {
   line-height: 50px;
   text-align: center;
   border-radius: 30px;
-  background-color: #fff;
+  background-color: transparent;
   z-index: 1000;
   border: 2px solid #ff742f;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.goto-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 /* -----------------Header----------------- */
@@ -35,14 +45,38 @@ header {
   left: 0;
   width: 100%;
   height: 80px;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 100;
+  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+header:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+header.is-scrolled {
+  background-color: rgba(0, 0, 0, 0.22);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+header.is-scrolled:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+header.is-past-hero {
+  background-color: rgba(255, 255, 255, 0.88);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 #header-inner {
   width: 1300px;
+  max-width: calc(100% - 48px);
   height: inherit;
   margin: auto;
   display: flex;
@@ -63,9 +97,15 @@ header {
 
 .gnb a {
   font-size: 16px;
-  color: #222;
+  color: #fff;
   font-weight: 400;
   position: relative;
+  transition: color 0.3s ease;
+}
+
+header:hover .gnb a,
+header.is-past-hero .gnb a {
+  color: #222;
 }
 
 .gnb a:nth-child(-n+4):before {
@@ -75,120 +115,17 @@ header {
   left: 0;
   width: 0;
   height: 10px;
-  background-color: #ff9965;
+  background-color: rgba(255, 107, 44, 0.45);
   z-index: -1;
   transition: 0.5s;
 }
 
+header.is-past-hero .gnb a:nth-child(-n+4):before {
+  background-color: #ff9965;
+}
+
 .gnb a:nth-child(-n+4):hover:before {
   width: 100%;
-}
-
-
-/* -----------------Main----------------- */
-main {
-  width: 100%;
-  height: 800px;
-  margin-top: 80px;
-  background-color: #fff;
-  /* border: 1px solid #000; */
-  position: relative;
-}
-
-main h1 {
-  font-family: "Playwrite NZ", cursive;
-  font-weight: 100;
-  color: rgb(255, 116, 47, 0.25);
-  font-size: 230px;
-  text-align: center;
-  line-height: 800px;
-  z-index: -2;
-}
-
-@keyframes main-ani {
-  0% {
-    transform: translateY(0);
-  }
-
-  100% {
-    transform: translateY(-10px);
-  }
-}
-
-main .image1 img {
-  position: absolute;
-  top: 6%;
-  left: 50%;
-  width: 600px;
-  height: auto;
-  z-index: 2;
-  border-radius: 20px;
-  transition: 0.35s;
-  animation: main-ani 1.5s ease-in-out infinite alternate;
-}
-main .image2{
-  position:absolute;
-  top:56%;
-  left:50%;
-  width:600px;
-}
-
-main .image2 img{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height: auto;
-  z-index: 2;
-  border-radius:20px;
-  animation: main-ani 1.5s ease-in-out infinite alternate;
-  animation-delay: 0.5s;
-}
-
-main .image2 img:nth-child(2){
-  opacity:0;
-  transition:.5s;
-}
-
-main .image2:hover img:nth-child(2){
-  opacity:1;
-}
-
-main .image3{
-  position:absolute;
-  top:5%;
-  left:19%;
-  width:500px;
-}
-
-main .image3 img{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  border-radius:20px;
-}
-
-main .image3 img:nth-child(2){
-  opacity:0;
-  transition:.5s;
-}
-
-main .image3:hover img:nth-child(2){
-  opacity:1;
-}
-
-main .image1:hover img {
-  top: 5%;
-  box-shadow: 0 10px 20px rgba(248, 113, 46, 0.6);
-}
-
-main .image2:hover img {
-  box-shadow: 0 10px 20px rgba(248, 113, 46, 0.6);
-}
-
-main .image3:hover img {
-  box-shadow: 0 0 20px rgba(248, 113, 46, 0.4);
 }
 
 
@@ -220,14 +157,21 @@ main .image3:hover img {
   align-items: center;
 }
 
+#s1 .section-inner {
+  width: 1300px;
+  max-width: calc(100% - 80px);
+  margin-inline: auto;
+}
+
 #s1 h1 {
   text-decoration-color: #ff742f;
-  text-align: left;
+  text-align: center;
 }
 
 #s1 .content {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
+  justify-content: center;
   gap: 80px;
   font-size: 17px;
   line-height: 30px;
